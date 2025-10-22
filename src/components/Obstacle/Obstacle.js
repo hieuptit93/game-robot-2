@@ -2,13 +2,13 @@ import React from 'react';
 import './Obstacle.css';
 
 const Obstacle = ({ position, showExplosion, isVisible = true }) => {
-  
+
   if (!isVisible) return null;
-  
+
   return (
-    <div 
+    <div
       className={`obstacle ${showExplosion ? 'exploding' : ''}`}
-      style={{ 
+      style={{
         left: `${position}%`,
         top: '45%'
       }}
