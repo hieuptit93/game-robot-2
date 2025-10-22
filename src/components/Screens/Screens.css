@@ -1,0 +1,229 @@
+.screen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, #000428 0%, #004e92 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.screen-content {
+  text-align: center;
+  z-index: 10;
+  position: relative;
+}
+
+.game-title {
+  font-size: 48px;
+  color: #fff;
+  text-shadow: 0 0 30px #00ff00;
+  margin-bottom: 40px;
+  line-height: 1.2;
+  animation: title-glow 3s ease-in-out infinite alternate;
+}
+
+.screen-title {
+  font-size: 36px;
+  color: #fff;
+  text-shadow: 0 0 20px #00ff00;
+  margin-bottom: 30px;
+  line-height: 1.2;
+}
+
+.victory-title {
+  color: #ffff00;
+  text-shadow: 0 0 30px #ffff00;
+}
+
+.gameover-title {
+  color: #ff4444;
+  text-shadow: 0 0 30px #ff4444;
+}
+
+.spaceship-logo {
+  font-size: 80px;
+  margin: 30px 0;
+  animation: float 3s ease-in-out infinite;
+}
+
+.victory-icon, .gameover-icon {
+  font-size: 60px;
+  margin: 20px 0;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.start-instruction {
+  margin-top: 40px;
+  font-size: 14px;
+  color: #aaa;
+  animation: blink 2s infinite;
+}
+
+.credits {
+  margin-top: 20px;
+  font-size: 10px;
+  color: #666;
+}
+
+.instructions {
+  text-align: left;
+  margin: 30px 0;
+  max-width: 500px;
+}
+
+.instruction-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 12px;
+}
+
+.instruction-number {
+  background: #00ff00;
+  color: #000;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  font-weight: bold;
+}
+
+.controls {
+  margin: 30px 0;
+  padding: 20px;
+  border: 2px solid #333;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.controls h3 {
+  margin-bottom: 15px;
+  color: #00ff00;
+  font-size: 14px;
+}
+
+.controls p {
+  margin: 5px 0;
+  font-size: 10px;
+}
+
+.score-display {
+  margin: 30px 0;
+}
+
+.score-display h2 {
+  font-size: 16px;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.final-score {
+  font-size: 48px;
+  color: #ffff00;
+  text-shadow: 0 0 20px #ffff00;
+  font-weight: bold;
+}
+
+.victory-message, .gameover-message {
+  margin: 30px 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.victory-message p {
+  color: #00ff00;
+}
+
+.gameover-message p {
+  color: #ff8888;
+}
+
+/* Background effects */
+.background-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.bg-star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 3s infinite;
+}
+
+.celebration-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #ffff00;
+  border-radius: 50%;
+  animation: particle-fall 3s linear infinite;
+}
+
+.static-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  opacity: 0.1;
+}
+
+.static-pixel {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #fff;
+  animation: static-flicker 0.1s infinite;
+}
+
+/* Animations */
+@keyframes title-glow {
+  0% { text-shadow: 0 0 30px #00ff00; }
+  100% { text-shadow: 0 0 50px #00ff00, 0 0 70px #00ff00; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.3; }
+}
+
+@keyframes particle-fall {
+  0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes static-flicker {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}

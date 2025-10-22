@@ -1,0 +1,66 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #111;
+  border-bottom: 2px solid #333;
+  height: 80px;
+  font-size: 12px;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 300px;
+}
+
+.progress-bar {
+  width: 200px;
+  height: 20px;
+  background: #333;
+  border: 2px solid #666;
+  position: relative;
+  margin-right: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #0066ff, #00aaff);
+  transition: width 0.5s ease;
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: shine 2s infinite;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.spaceship-icon {
+  font-size: 16px;
+  animation: float 2s ease-in-out infinite;
+}
+
+.timer {
+  font-size: 16px;
+  color: #fff;
+  text-shadow: 0 0 10px #00ff00;
+}
+
+.score {
+  font-size: 14px;
+  color: #ffff00;
+  text-shadow: 0 0 10px #ffff00;
+}

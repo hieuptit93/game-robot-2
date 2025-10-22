@@ -1,0 +1,76 @@
+.obstacle {
+  position: absolute;
+  transform: translateY(-50%);
+  z-index: 10;
+  transition: opacity 0.3s ease;
+}
+
+.obstacle.exploding {
+  animation: shake 0.3s ease;
+}
+
+.asteroid {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background: #777;
+  border-radius: 50%;
+  border: 2px solid #999;
+  box-shadow: 0 0 10px rgba(119, 119, 119, 0.5);
+  animation: asteroid-pulse 2s ease-in-out infinite;
+}
+
+@keyframes asteroid-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 10px rgba(119, 119, 119, 0.5);
+    border-color: #999;
+  }
+  50% { 
+    box-shadow: 0 0 20px rgba(255, 100, 100, 0.7);
+    border-color: #ff6464;
+  }
+}
+
+.asteroid-surface {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 30%, #999, #555);
+  border-radius: 50%;
+}
+
+.asteroid-crater {
+  position: absolute;
+  background: #333;
+  border-radius: 50%;
+  border: 1px solid #444;
+}
+
+.crater-1 {
+  width: 8px;
+  height: 8px;
+  top: 15px;
+  left: 20px;
+}
+
+.crater-2 {
+  width: 6px;
+  height: 6px;
+  top: 30px;
+  left: 10px;
+}
+
+.crater-3 {
+  width: 4px;
+  height: 4px;
+  top: 25px;
+  left: 35px;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateY(-50%) translateX(0); }
+  25% { transform: translateY(-50%) translateX(-2px); }
+  75% { transform: translateY(-50%) translateX(2px); }
+}

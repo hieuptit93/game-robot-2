@@ -1,0 +1,18 @@
+.app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #000;
+  overflow: hidden;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}

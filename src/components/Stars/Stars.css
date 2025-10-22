@@ -1,0 +1,41 @@
+.stars-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150%;
+  height: 100%;
+  z-index: 1;
+  transition: transform 0.8s ease;
+}
+
+.stars-container.stars-moving .star {
+  animation: twinkle 3s infinite, star-move 0.8s ease-out;
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 3s infinite;
+  transition: left 0.8s ease;
+}
+
+.star-near {
+  opacity: 0.9;
+  z-index: 2;
+}
+
+.star-far {
+  opacity: 0.5;
+  z-index: 1;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+@keyframes star-move {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-100px * var(--speed, 0.3))); }
+}

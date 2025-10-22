@@ -1,0 +1,119 @@
+.footer {
+  background: #000;
+  border-top: 2px solid #333;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+}
+
+.word-display {
+  text-align: center;
+}
+
+.word-text {
+  font-size: 32px;
+  color: #fff;
+  text-shadow: 0 0 20px #00ff00;
+  margin-bottom: 10px;
+  letter-spacing: 4px;
+  animation: glow-pulse 2s ease-in-out infinite alternate;
+}
+
+.instruction-text {
+  font-size: 10px;
+  color: #888;
+  opacity: 0.7;
+}
+
+.recording-status {
+  font-size: 12px;
+  margin-top: 5px;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+.recording-status.recording {
+  color: #ff4444;
+  background: rgba(255, 68, 68, 0.2);
+  border: 1px solid #ff4444;
+  animation: recording-pulse 1s ease-in-out infinite;
+}
+
+.recording-status.processing {
+  color: #ffaa00;
+  background: rgba(255, 170, 0, 0.2);
+  border: 1px solid #ffaa00;
+  animation: processing-spin 1s linear infinite;
+}
+
+.recording-status.result {
+  color: #00ff00;
+  background: rgba(0, 255, 0, 0.2);
+  border: 1px solid #00ff00;
+}
+
+.recording-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 10px;
+  color: #ff4444;
+}
+
+.recording-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.recording-dot.recording {
+  background: #ff4444;
+  animation: recording-blink 1s ease-in-out infinite;
+}
+
+.recording-dot.listening {
+  background: #00aaff;
+  animation: listening-pulse 2s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0% { text-shadow: 0 0 20px #00ff00; }
+  100% { text-shadow: 0 0 30px #00ff00, 0 0 40px #00ff00; }
+}
+
+@keyframes recording-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 5px #ff4444;
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 15px #ff4444, 0 0 25px rgba(255, 68, 68, 0.5);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes processing-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes recording-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes listening-pulse {
+  0%, 100% { 
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
