@@ -1,7 +1,7 @@
 import React from 'react';
 import './Screens.css';
 
-const GameOverScreen = ({ score }) => {
+const GameOverScreen = ({ score, onTryAgain }) => {
   return (
     <div className="screen gameover-screen">
       <div className="screen-content">
@@ -24,7 +24,12 @@ const GameOverScreen = ({ score }) => {
         </div>
         
         <div className="start-instruction">
-          <p>Press SPACE to Try Again</p>
+          <p className="desktop-instruction">Press SPACE to Try Again</p>
+          <p className="mobile-instruction">Tap the button below to try again</p>
+          <button className="screen-button retry-button" onClick={onTryAgain}>
+            <span>🔄</span>
+            Try Again
+          </button>
         </div>
       </div>
       

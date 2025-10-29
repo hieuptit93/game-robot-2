@@ -1,7 +1,7 @@
 import React from 'react';
 import './Screens.css';
 
-const WinScreen = ({ score }) => {
+const WinScreen = ({ score, onPlayAgain }) => {
   return (
     <div className="screen win-screen">
       <div className="screen-content">
@@ -24,7 +24,12 @@ const WinScreen = ({ score }) => {
         </div>
         
         <div className="start-instruction">
-          <p>Press SPACE to Play Again</p>
+          <p className="desktop-instruction">Press SPACE to Play Again</p>
+          <p className="mobile-instruction">Tap the button below to play again</p>
+          <button className="screen-button victory-button" onClick={onPlayAgain}>
+            <span>🔄</span>
+            Play Again
+          </button>
         </div>
       </div>
       

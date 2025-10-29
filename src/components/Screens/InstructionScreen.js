@@ -1,7 +1,7 @@
 import React from 'react';
 import './Screens.css';
 
-const InstructionScreen = () => {
+const InstructionScreen = ({ onStartGame }) => {
   return (
     <div className="screen instruction-screen">
       <div className="screen-content">
@@ -15,7 +15,8 @@ const InstructionScreen = () => {
           
           <div className="instruction-item">
             <span className="instruction-number">2</span>
-            <p>Press SPACE to activate VAD (Voice Activity Detection)</p>
+            <p className="desktop-instruction">Press SPACE or tap Record button to start recording</p>
+            <p className="mobile-instruction">Tap the Record button to start recording</p>
           </div>
           
           <div className="instruction-item">
@@ -25,7 +26,7 @@ const InstructionScreen = () => {
           
           <div className="instruction-item">
             <span className="instruction-number">4</span>
-            <p>If your pronunciation score > 60, ship will shoot!</p>
+            <p>If your pronunciation score ≥ 50, ship will shoot!</p>
           </div>
           
           <div className="instruction-item">
@@ -36,16 +37,21 @@ const InstructionScreen = () => {
         
         <div className="controls">
           <h3>CONTROLS</h3>
-          <p>SPACE = Start/Stop VAD (Voice Activity Detection)</p>
-          <p>Once VAD is active, just speak each word - no need to press SPACE again!</p>
-          <p>'D' = Test Mode (instant correct)</p>
-          <p>'T' = Test API Connection</p>
+          <p className="desktop-instruction">SPACE = Start recording (Voice Activity Detection)</p>
+          <p className="mobile-instruction">Record Button = Start recording (Voice Activity Detection)</p>
+          <p>Once recording starts, just speak each word clearly!</p>
+          <p>'D' = Test Mode (instant correct - desktop only)</p>
           <p>🎤 Microphone access required!</p>
-          <p>🤖 VAD automatically detects when you speak and continues listening!</p>
+          <p>🤖 VAD automatically detects when you speak!</p>
         </div>
         
         <div className="start-instruction">
-          <p>Press SPACE to Begin Mission</p>
+          <p className="desktop-instruction">Press SPACE to Begin Mission</p>
+          <p className="mobile-instruction">Tap the button below to begin</p>
+          <button className="screen-button play-button" onClick={onStartGame}>
+            <span>🎮</span>
+            Begin Mission
+          </button>
         </div>
       </div>
     </div>

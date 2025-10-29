@@ -15,4 +15,24 @@
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
+}/* Mob
+ile responsive */
+@media (max-width: 768px) {
+  .app {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app {
+    font-size: 12px;
+  }
+}
+
+/* Ensure touch targets are large enough on mobile */
+@media (hover: none) and (pointer: coarse) {
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }

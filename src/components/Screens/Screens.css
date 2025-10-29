@@ -16,7 +16,7 @@
 }
 
 .game-title {
-  font-size: 48px;
+  font-size: clamp(32px, 8vw, 48px);
   color: #fff;
   text-shadow: 0 0 30px #00ff00;
   margin-bottom: 40px;
@@ -25,7 +25,7 @@
 }
 
 .screen-title {
-  font-size: 36px;
+  font-size: clamp(24px, 6vw, 36px);
   color: #fff;
   text-shadow: 0 0 20px #00ff00;
   margin-bottom: 30px;
@@ -43,27 +43,27 @@
 }
 
 .spaceship-logo {
-  font-size: 80px;
+  font-size: clamp(50px, 12vw, 80px);
   margin: 30px 0;
   animation: float 3s ease-in-out infinite;
 }
 
 .victory-icon, .gameover-icon {
-  font-size: 60px;
+  font-size: clamp(40px, 10vw, 60px);
   margin: 20px 0;
   animation: bounce 2s ease-in-out infinite;
 }
 
 .start-instruction {
   margin-top: 40px;
-  font-size: 14px;
+  font-size: clamp(12px, 3vw, 14px);
   color: #aaa;
   animation: blink 2s infinite;
 }
 
 .credits {
   margin-top: 20px;
-  font-size: 10px;
+  font-size: clamp(8px, 2vw, 10px);
   color: #666;
 }
 
@@ -71,31 +71,33 @@
   text-align: left;
   margin: 30px 0;
   max-width: 500px;
+  padding: 0 20px;
 }
 
 .instruction-item {
   display: flex;
   align-items: center;
   margin-bottom: 15px;
-  font-size: 12px;
+  font-size: clamp(10px, 2.5vw, 12px);
 }
 
 .instruction-number {
   background: #00ff00;
   color: #000;
-  width: 25px;
-  height: 25px;
+  width: clamp(20px, 5vw, 25px);
+  height: clamp(20px, 5vw, 25px);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 15px;
   font-weight: bold;
+  font-size: clamp(10px, 2.5vw, 12px);
 }
 
 .controls {
   margin: 30px 0;
-  padding: 20px;
+  padding: clamp(15px, 4vw, 20px);
   border: 2px solid #333;
   background: rgba(0, 0, 0, 0.5);
 }
@@ -103,12 +105,12 @@
 .controls h3 {
   margin-bottom: 15px;
   color: #00ff00;
-  font-size: 14px;
+  font-size: clamp(12px, 3vw, 14px);
 }
 
 .controls p {
   margin: 5px 0;
-  font-size: 10px;
+  font-size: clamp(8px, 2vw, 10px);
 }
 
 .score-display {
@@ -116,13 +118,13 @@
 }
 
 .score-display h2 {
-  font-size: 16px;
+  font-size: clamp(14px, 3.5vw, 16px);
   color: #aaa;
   margin-bottom: 10px;
 }
 
 .final-score {
-  font-size: 48px;
+  font-size: clamp(32px, 8vw, 48px);
   color: #ffff00;
   text-shadow: 0 0 20px #ffff00;
   font-weight: bold;
@@ -130,8 +132,9 @@
 
 .victory-message, .gameover-message {
   margin: 30px 0;
-  font-size: 12px;
+  font-size: clamp(10px, 2.5vw, 12px);
   line-height: 1.5;
+  padding: 0 20px;
 }
 
 .victory-message p {
@@ -226,4 +229,262 @@
 @keyframes static-flicker {
   0%, 100% { opacity: 0; }
   50% { opacity: 1; }
+}
+/* Mobi
+le responsive breakpoints */
+@media (max-width: 768px) {
+  .screen {
+    padding: 20px;
+  }
+  
+  .screen-content {
+    width: 100%;
+    max-width: 90vw;
+  }
+  
+  .game-title {
+    margin-bottom: 30px;
+  }
+  
+  .screen-title {
+    margin-bottom: 25px;
+  }
+  
+  .spaceship-logo {
+    margin: 20px 0;
+  }
+  
+  .victory-icon, .gameover-icon {
+    margin: 15px 0;
+  }
+  
+  .instructions {
+    margin: 20px 0;
+    padding: 0 10px;
+  }
+  
+  .instruction-item {
+    margin-bottom: 12px;
+  }
+  
+  .controls {
+    margin: 20px 0;
+    padding: 15px;
+  }
+  
+  .start-instruction {
+    margin-top: 30px;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .screen {
+    padding: 15px;
+  }
+  
+  .screen-content {
+    max-width: 95vw;
+  }
+  
+  .game-title {
+    margin-bottom: 25px;
+  }
+  
+  .screen-title {
+    margin-bottom: 20px;
+  }
+  
+  .spaceship-logo {
+    margin: 15px 0;
+  }
+  
+  .victory-icon, .gameover-icon {
+    margin: 10px 0;
+  }
+  
+  .instructions {
+    margin: 15px 0;
+    padding: 0 5px;
+  }
+  
+  .instruction-item {
+    margin-bottom: 10px;
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+  
+  .instruction-number {
+    margin-right: 0;
+  }
+  
+  .controls {
+    margin: 15px 0;
+    padding: 12px;
+  }
+  
+  .start-instruction {
+    margin-top: 25px;
+    padding: 0 15px;
+  }
+  
+  .victory-message, .gameover-message {
+    margin: 20px 0;
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 320px) {
+  .screen {
+    padding: 10px;
+  }
+  
+  .instruction-item {
+    font-size: 11px;
+  }
+  
+  .controls p {
+    font-size: 9px;
+  }
+}/* Sc
+reen buttons */
+.screen-button {
+  background: linear-gradient(135deg, #00ff00, #00aa00);
+  border: none;
+  border-radius: 50px;
+  padding: 15px 30px;
+  color: #000;
+  font-weight: bold;
+  font-size: clamp(14px, 3.5vw, 18px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);
+  min-width: 150px;
+  justify-content: center;
+  margin: 20px auto;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.screen-button:hover {
+  background: linear-gradient(135deg, #00aa00, #008800);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(0, 255, 0, 0.4);
+}
+
+.screen-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 15px rgba(0, 255, 0, 0.3);
+}
+
+.screen-button span {
+  font-size: clamp(16px, 4vw, 22px);
+}
+
+/* Specific button styles */
+.start-button {
+  background: linear-gradient(135deg, #00ff00, #00cc00);
+  animation: start-pulse 2s ease-in-out infinite;
+}
+
+.play-button {
+  background: linear-gradient(135deg, #0099ff, #0066cc);
+  box-shadow: 0 4px 15px rgba(0, 153, 255, 0.3);
+}
+
+.play-button:hover {
+  background: linear-gradient(135deg, #0066cc, #004499);
+  box-shadow: 0 6px 25px rgba(0, 153, 255, 0.4);
+}
+
+.victory-button {
+  background: linear-gradient(135deg, #ffff00, #cccc00);
+  box-shadow: 0 4px 15px rgba(255, 255, 0, 0.3);
+  color: #000;
+}
+
+.victory-button:hover {
+  background: linear-gradient(135deg, #cccc00, #999900);
+  box-shadow: 0 6px 25px rgba(255, 255, 0, 0.4);
+}
+
+.retry-button {
+  background: linear-gradient(135deg, #ff6600, #cc4400);
+  box-shadow: 0 4px 15px rgba(255, 102, 0, 0.3);
+  color: #fff;
+}
+
+.retry-button:hover {
+  background: linear-gradient(135deg, #cc4400, #992200);
+  box-shadow: 0 6px 25px rgba(255, 102, 0, 0.4);
+}
+
+/* Desktop/Mobile instruction visibility */
+.desktop-instruction {
+  display: block;
+}
+
+.mobile-instruction {
+  display: none;
+}
+
+/* Button animations */
+@keyframes start-pulse {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 6px 25px rgba(0, 255, 0, 0.5);
+    transform: scale(1.05);
+  }
+}
+
+/* Mobile responsive for buttons */
+@media (max-width: 768px) {
+  .desktop-instruction {
+    display: none;
+  }
+  
+  .mobile-instruction {
+    display: block;
+  }
+  
+  .screen-button {
+    padding: 18px 35px;
+    min-width: 180px;
+    font-size: 16px;
+  }
+  
+  .screen-button span {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .screen-button {
+    padding: 20px 40px;
+    min-width: 200px;
+    font-size: 18px;
+  }
+  
+  .screen-button span {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 320px) {
+  .screen-button {
+    padding: 18px 30px;
+    min-width: 160px;
+    font-size: 16px;
+  }
+  
+  .screen-button span {
+    font-size: 20px;
+  }
 }

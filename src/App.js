@@ -12,12 +12,49 @@ import BackgroundMusic from './components/BackgroundMusic/BackgroundMusic';
 import './App.css';
 
 const WORDS_LIST = [
-    'ATTACK', 'DEFEND', 'SPACE', 'ROCKET', 'PLANET', 'GALAXY', 'LASER', 'SHIELD',
-    'ENERGY', 'POWER', 'FLIGHT', 'MISSION', 'TARGET', 'COMBAT', 'VICTORY'
+    // Animals (Động vật)
+    'CAT', 'DOG', 'BIRD', 'FISH', 'LION', 'TIGER', 'BEAR', 'RABBIT', 'HORSE', 'ELEPHANT',
+
+    // Colors (Màu sắc)
+    'RED', 'BLUE', 'GREEN', 'YELLOW', 'ORANGE', 'PURPLE', 'PINK', 'BLACK', 'WHITE', 'BROWN',
+
+    // Food (Thức ăn)
+    'APPLE', 'BANANA', 'ORANGE', 'CAKE', 'BREAD', 'MILK', 'WATER', 'PIZZA', 'COOKIE', 'ICE CREAM',
+
+    // School & Learning (Học tập)
+    'BOOK', 'PEN', 'PAPER', 'SCHOOL', 'TEACHER', 'STUDENT', 'MATH', 'SCIENCE', 'ART', 'MUSIC',
+
+    // Family (Gia đình)
+    'MOTHER', 'FATHER', 'SISTER', 'BROTHER', 'FAMILY', 'BABY', 'FRIEND', 'LOVE', 'HAPPY', 'SMILE',
+
+    // Activities (Hoạt động)
+    'PLAY', 'RUN', 'JUMP', 'SWIM', 'DANCE', 'SING', 'READ', 'WRITE', 'DRAW', 'SLEEP',
+
+    // Nature (Thiên nhiên)
+    'SUN', 'MOON', 'STAR', 'TREE', 'FLOWER', 'GRASS', 'RAIN', 'SNOW', 'WIND', 'CLOUD',
+
+    // Body Parts (Bộ phận cơ thể)
+    'HEAD', 'HAND', 'FOOT', 'EYE', 'NOSE', 'MOUTH', 'EAR', 'ARM', 'LEG', 'HAIR',
+
+    // Transportation (Phương tiện)
+    'CAR', 'BUS', 'TRAIN', 'PLANE', 'BIKE', 'BOAT', 'TRUCK', 'TAXI', 'ROCKET', 'SHIP',
+
+    // Toys & Games (Đồ chơi)
+    'BALL', 'DOLL', 'GAME', 'TOY', 'PUZZLE', 'ROBOT', 'KITE', 'BLOCKS', 'CARDS', 'MAGIC'
 ];
 
 const TOTAL_QUESTIONS = 10;
 const INITIAL_TIME = 120; // 2 minutes
+
+// Function to shuffle array
+const shuffleArray = (array) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+};
 
 function App() {
     const [gameState, setGameState] = useState('start');
@@ -31,6 +68,7 @@ function App() {
     const [showExplosion, setShowExplosion] = useState(false);
     const [recordingStatus, setRecordingStatus] = useState('');
     const [isProcessing, setIsProcessing] = useState(false);
+    const [shuffledWords, setShuffledWords] = useState(() => shuffleArray(WORDS_LIST));
 
     // Use pronunciation scoring hook
     const {
@@ -90,7 +128,9 @@ function App() {
         setCurrentWordIndex(0);
         setQuestionsAnswered(0);
         setBackgroundOffset(0);
-        setRecordingStatus('Press SPACE to start recording');
+        setRecordingStatus(''); // Clear any previous status
+        // Shuffle words for new game
+        setShuffledWords(shuffleArray(WORDS_LIST));
     }, [playClickSound]);
 
     const resetGame = useCallback(() => {
@@ -105,6 +145,8 @@ function App() {
         setShowExplosion(false);
         setIsProcessing(false);
         setRecordingStatus('');
+        // Reset to new shuffled words
+        setShuffledWords(shuffleArray(WORDS_LIST));
 
         if (isListening) {
             stopListening();
@@ -132,7 +174,7 @@ function App() {
             setProgress(newProgress);
             setScore(newScore);
             setBackgroundOffset(newQuestionsAnswered * 10);
-            setCurrentWordIndex((prev) => (prev + 1) % WORDS_LIST.length);
+            setCurrentWordIndex((prev) => (prev + 1) % shuffledWords.length);
 
             setTimeout(() => {
                 setShowExplosion(false);
@@ -170,7 +212,7 @@ function App() {
 
     // Process pronunciation - SIMPLIFIED
     const processPronunciation = useCallback(async (audioBlob) => {
-        const currentWord = WORDS_LIST[currentWordIndex];
+        const currentWord = shuffledWords[currentWordIndex];
 
         try {
             setIsProcessing(true);
@@ -187,7 +229,7 @@ function App() {
                     // CORRECT - Move to next word
                     playSuccessSound();
                     setRecordingStatus(`Great! Score: ${score.toFixed(0)}`);
-                    
+
                     // Calculate new questions count
                     const newQuestionsAnswered = questionsAnswered + 1;
                     console.log('🎯 Correct answer! Moving to next word:', {
@@ -196,7 +238,7 @@ function App() {
                         totalQuestions: TOTAL_QUESTIONS,
                         willContinue: newQuestionsAnswered < TOTAL_QUESTIONS
                     });
-                    
+
                     handleCorrectAnswer();
 
                     // Auto start recording for next word after animation
@@ -250,7 +292,7 @@ function App() {
         } finally {
             setIsProcessing(false);
         }
-    }, [currentWordIndex, handleCorrectAnswer, playSuccessSound, playErrorSound, gameState, questionsAnswered, startRecording]);
+    }, [currentWordIndex, handleCorrectAnswer, playSuccessSound, playErrorSound, gameState, questionsAnswered, startRecording, shuffledWords]);
 
     // Handle recording completion
     useEffect(() => {
@@ -317,20 +359,31 @@ function App() {
         return () => window.removeEventListener('keydown', handleKeyPress);
     }, [gameState, startRecording, handleCorrectAnswer, startGame, resetGame, playClickSound]);
 
+    // Handle screen navigation
+    const handleStartClick = useCallback(() => {
+        playClickSound();
+        setGameState('instructions');
+    }, [playClickSound]);
+
+    const handlePlayAgainClick = useCallback(() => {
+        playClickSound();
+        resetGame();
+    }, [playClickSound, resetGame]);
+
     if (gameState === 'start') {
-        return <StartScreen />;
+        return <StartScreen onStart={handleStartClick} />;
     }
 
     if (gameState === 'instructions') {
-        return <InstructionScreen />;
+        return <InstructionScreen onStartGame={startGame} />;
     }
 
     if (gameState === 'win') {
-        return <WinScreen score={score} />;
+        return <WinScreen score={score} onPlayAgain={handlePlayAgainClick} />;
     }
 
     if (gameState === 'gameover') {
-        return <GameOverScreen score={score} />;
+        return <GameOverScreen score={score} onTryAgain={handlePlayAgainClick} />;
     }
 
     return (
@@ -350,12 +403,14 @@ function App() {
                 isMoving={showBullet || showExplosion}
             />
             <Footer
-                currentWord={WORDS_LIST[currentWordIndex]}
+                currentWord={shuffledWords[currentWordIndex]}
                 isRecording={isRecording}
                 isProcessing={isProcessing}
                 recordingStatus={recordingStatus}
                 vadActive={isListening}
                 isListening={isListening}
+                onStartRecording={startRecording}
+                gameState={gameState}
             />
         </div>
     );

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Footer.css';
 
-const Footer = ({ currentWord, isRecording, isProcessing, recordingStatus, vadActive, isListening }) => {
+const Footer = ({ currentWord, isRecording, isProcessing, recordingStatus, vadActive, isListening, onStartRecording, gameState }) => {
   return (
     <div className="footer">
       <div className="word-display">
@@ -12,8 +12,21 @@ const Footer = ({ currentWord, isRecording, isProcessing, recordingStatus, vadAc
             {recordingStatus}
           </div>
         ) : !vadActive ? (
-          <div className="instruction-text">
-            Press SPACE to start continuous recording or 'D' to test
+          <div className="instruction-container">
+            <div className="instruction-text">
+              <span className="desktop-instruction">Press SPACE to start recording or 'D' to test</span>
+              <span className="mobile-instruction">Tap the button below to start recording</span>
+            </div>
+            {gameState === 'playing' && (
+              <button 
+                className="record-button"
+                onClick={onStartRecording}
+                disabled={isRecording || isProcessing}
+              >
+                <div className="record-button-icon">🎤</div>
+                <span>Record</span>
+              </button>
+            )}
           </div>
         ) : null}
         

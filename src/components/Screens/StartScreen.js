@@ -1,7 +1,7 @@
 import React from 'react';
 import './Screens.css';
 
-const StartScreen = () => {
+const StartScreen = ({ onStart }) => {
   return (
     <div className="screen start-screen">
       <div className="screen-content">
@@ -16,7 +16,12 @@ const StartScreen = () => {
         <div className="spaceship-logo">🚀</div>
         
         <div className="start-instruction">
-          <p>Press SPACE to Start</p>
+          <p className="desktop-instruction">Press SPACE to Start</p>
+          <p className="mobile-instruction">Tap the button below to start</p>
+          <button className="screen-button start-button" onClick={onStart}>
+            <span>🚀</span>
+            Start Game
+          </button>
         </div>
         
         <div className="credits">
