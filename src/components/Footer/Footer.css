@@ -151,7 +151,6 @@
   color: #ffaa00;
   background: rgba(255, 170, 0, 0.2);
   border: 1px solid #ffaa00;
-  animation: processing-spin 1s linear infinite;
 }
 
 .recording-status.result {
@@ -202,10 +201,7 @@
   }
 }
 
-@keyframes processing-spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+
 
 @keyframes recording-blink {
   0%, 100% { opacity: 1; }
