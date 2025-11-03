@@ -356,13 +356,13 @@ function SurveyModal({ isOpen, onClose, onPlayAgain, gameSessionId, currentGameI
 
                 {/* Step indicator */}
                 <div style={modalStyles.stepIndicator}>
-                    {[1,2,3,4].map((s) => (
-                        <div 
-                            key={s} 
+                    {[1, 2, 3, 4].map((s) => (
+                        <div
+                            key={s}
                             style={{
                                 ...modalStyles.stepDot,
                                 backgroundColor: step === s ? '#22d3ee' : '#374151'
-                            }} 
+                            }}
                         />
                     ))}
                 </div>
@@ -372,8 +372,8 @@ function SurveyModal({ isOpen, onClose, onPlayAgain, gameSessionId, currentGameI
                     <div>
                         <p style={modalStyles.question}>Bạn có thích trò chơi này không?</p>
                         <div style={modalStyles.buttonGroup}>
-                            <button 
-                                onClick={() => handleNextFromStep1('sad')} 
+                            <button
+                                onClick={() => handleNextFromStep1('sad')}
                                 style={{
                                     ...modalStyles.button,
                                     ...modalStyles.emojiButton,
@@ -383,8 +383,8 @@ function SurveyModal({ isOpen, onClose, onPlayAgain, gameSessionId, currentGameI
                             >
                                 😞
                             </button>
-                            <button 
-                                onClick={() => handleNextFromStep1('neutral')} 
+                            <button
+                                onClick={() => handleNextFromStep1('neutral')}
                                 style={{
                                     ...modalStyles.button,
                                     ...modalStyles.emojiButton,
@@ -394,8 +394,8 @@ function SurveyModal({ isOpen, onClose, onPlayAgain, gameSessionId, currentGameI
                             >
                                 😐
                             </button>
-                            <button 
-                                onClick={() => handleNextFromStep1('happy')} 
+                            <button
+                                onClick={() => handleNextFromStep1('happy')}
                                 style={{
                                     ...modalStyles.button,
                                     ...modalStyles.emojiButton,
@@ -415,8 +415,8 @@ function SurveyModal({ isOpen, onClose, onPlayAgain, gameSessionId, currentGameI
                     <div>
                         <p style={modalStyles.question}>Trò chơi này dễ hay khó?</p>
                         <div style={modalStyles.buttonGrid}>
-                            <button 
-                                onClick={() => handleNextFromStep2('easy')} 
+                            <button
+                                onClick={() => handleNextFromStep2('easy')}
                                 style={{
                                     ...modalStyles.button,
                                     ...(difficultyAnswer === 'easy' ? modalStyles.buttonSelected : {})
@@ -424,8 +424,8 @@ function SurveyModal({ isOpen, onClose, onPlayAgain, gameSessionId, currentGameI
                             >
                                 Dễ
                             </button>
-                            <button 
-                                onClick={() => handleNextFromStep2('normal')} 
+                            <button
+                                onClick={() => handleNextFromStep2('normal')}
                                 style={{
                                     ...modalStyles.button,
                                     ...(difficultyAnswer === 'normal' ? modalStyles.buttonSelected : {})
@@ -433,8 +433,8 @@ function SurveyModal({ isOpen, onClose, onPlayAgain, gameSessionId, currentGameI
                             >
                                 Bình thường
                             </button>
-                            <button 
-                                onClick={() => handleNextFromStep2('hard')} 
+                            <button
+                                onClick={() => handleNextFromStep2('hard')}
                                 style={{
                                     ...modalStyles.button,
                                     ...(difficultyAnswer === 'hard' ? modalStyles.buttonSelected : {})
@@ -459,8 +459,8 @@ function SurveyModal({ isOpen, onClose, onPlayAgain, gameSessionId, currentGameI
                             placeholder="Nhập bình luận ngắn (tùy chọn)"
                         />
                         <div style={modalStyles.actionButtons}>
-                            <button 
-                                onClick={handleSubmitComment} 
+                            <button
+                                onClick={handleSubmitComment}
                                 style={modalStyles.actionButton}
                             >
                                 Tiếp tục
@@ -474,8 +474,8 @@ function SurveyModal({ isOpen, onClose, onPlayAgain, gameSessionId, currentGameI
                     <div>
                         <p style={modalStyles.question}>Bạn có muốn chơi lại không?</p>
                         <div style={modalStyles.buttonGrid}>
-                            <button 
-                                onClick={() => handleReplayChoice('yes')} 
+                            <button
+                                onClick={() => handleReplayChoice('yes')}
                                 style={{
                                     ...modalStyles.button,
                                     ...(wantsReplay === 'yes' ? { border: '1px solid #4ade80', backgroundColor: 'rgba(16, 185, 129, 0.2)' } : {})
@@ -483,8 +483,8 @@ function SurveyModal({ isOpen, onClose, onPlayAgain, gameSessionId, currentGameI
                             >
                                 Có
                             </button>
-                            <button 
-                                onClick={() => handleReplayChoice('no')} 
+                            <button
+                                onClick={() => handleReplayChoice('no')}
                                 style={{
                                     ...modalStyles.button,
                                     ...(wantsReplay === 'no' ? { border: '1px solid #f87171', backgroundColor: 'rgba(220, 38, 38, 0.2)' } : {})
@@ -515,14 +515,14 @@ function SurveyModal({ isOpen, onClose, onPlayAgain, gameSessionId, currentGameI
                                     };
                                     const query = new URLSearchParams(
                                         Object.fromEntries(
-                                            Object.entries(params).filter(([_, v]) => v !== undefined && v !== null && v !== '' )
+                                            Object.entries(params).filter(([_, v]) => v !== undefined && v !== null && v !== '')
                                         )
                                     ).toString();
                                     const fullHref = query ? `${baseHref}?${query}` : baseHref;
 
                                     return (
-                                        <a 
-                                            key={g.id} 
+                                        <a
+                                            key={g.id}
                                             href={fullHref}
                                             style={modalStyles.gameLink}
                                             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#374151'}
@@ -532,7 +532,7 @@ function SurveyModal({ isOpen, onClose, onPlayAgain, gameSessionId, currentGameI
                                                 {g.image ? (
                                                     <img src={g.image} alt={g.title} style={modalStyles.gameImage} />
                                                 ) : (
-                                                    <div style={{...modalStyles.gameImage, backgroundColor: '#374151', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>🎮</div>
+                                                    <div style={{ ...modalStyles.gameImage, backgroundColor: '#374151', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>🎮</div>
                                                 )}
                                                 <div style={modalStyles.gameInfo}>
                                                     <div style={modalStyles.gameTitle}>{g.title || g.key}</div>
@@ -548,8 +548,8 @@ function SurveyModal({ isOpen, onClose, onPlayAgain, gameSessionId, currentGameI
                             </div>
                         )}
                         <div style={modalStyles.actionButtons}>
-                            <button 
-                                onClick={onClose} 
+                            <button
+                                onClick={onClose}
                                 style={modalStyles.actionButton}
                             >
                                 Đóng
