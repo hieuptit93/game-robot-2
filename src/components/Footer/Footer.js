@@ -14,8 +14,8 @@ const Footer = ({ currentWord, isRecording, isProcessing, recordingStatus, vadAc
         ) : !vadActive ? (
           <div className="instruction-container">
             <div className="instruction-text">
-              <span className="desktop-instruction">Press SPACE to start recording or 'D' to test</span>
-              <span className="mobile-instruction">Tap the button below to start recording</span>
+              <span className="desktop-instruction">Nhấn SPACE để ghi âm hoặc 'D' để thử nghiệm</span>
+              <span className="mobile-instruction">Chạm vào nút bên dưới để ghi âm</span>
             </div>
             {gameState === 'playing' && (
               <button 
@@ -24,7 +24,7 @@ const Footer = ({ currentWord, isRecording, isProcessing, recordingStatus, vadAc
                 disabled={isRecording || isProcessing}
               >
                 <div className="record-button-icon">🎤</div>
-                <span>Record</span>
+                <span>Ghi âm</span>
               </button>
             )}
           </div>
@@ -33,7 +33,7 @@ const Footer = ({ currentWord, isRecording, isProcessing, recordingStatus, vadAc
         {isRecording && (
           <div className="recording-indicator">
             <div className="recording-dot recording"></div>
-            <span>Recording...</span>
+            <span>Đang ghi...</span>
           </div>
         )}
       </div>

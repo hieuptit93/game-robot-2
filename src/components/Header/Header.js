@@ -25,7 +25,7 @@ const Header = ({ progress, timeLeft, score }) => {
       </div>
       
       <div className="score">
-        Score: {score}
+        Điểm: {score}
       </div>
     </div>
   );

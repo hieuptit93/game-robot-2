@@ -1,3 +1,16 @@
+/* Global font settings for Vietnamese support */
+* {
+  font-family: 'Roboto Mono', monospace;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', sans-serif;
+}
+
+button {
+  font-family: 'Orbitron', sans-serif;
+}
+
 .app {
   width: 100vw;
   height: 100vh;
@@ -5,6 +18,7 @@
   flex-direction: column;
   background: #000;
   overflow: hidden;
+  font-family: 'Roboto Mono', monospace;
 }
 
 @keyframes twinkle {

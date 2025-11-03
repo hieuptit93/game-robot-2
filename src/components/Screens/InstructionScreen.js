@@ -26,52 +26,52 @@ const InstructionScreen = ({ onStartGame, onExit }) => {
         </button>
       )}
       <div className="screen-content">
-        <h2 className="screen-title">HOW TO PLAY</h2>
+        <h2 className="screen-title">CÁCH CHƠI</h2>
         
         <div className="instructions">
           <div className="instruction-item">
             <span className="instruction-number">1</span>
-            <p>A word will appear at the bottom of the screen</p>
+            <p>Một từ sẽ xuất hiện ở cuối màn hình</p>
           </div>
           
           <div className="instruction-item">
             <span className="instruction-number">2</span>
-            <p className="desktop-instruction">Press SPACE or tap Record button to start recording</p>
-            <p className="mobile-instruction">Tap the Record button to start recording</p>
+            <p className="desktop-instruction">Nhấn SPACE hoặc nút Ghi âm để bắt đầu ghi</p>
+            <p className="mobile-instruction">Chạm vào nút Ghi âm để bắt đầu ghi</p>
           </div>
           
           <div className="instruction-item">
             <span className="instruction-number">3</span>
-            <p>Speak the word - VAD will auto-detect and record</p>
+            <p>Nói từ đó - VAD sẽ tự động phát hiện và ghi âm</p>
           </div>
           
           <div className="instruction-item">
             <span className="instruction-number">4</span>
-            <p>If your pronunciation score ≥ 50, ship will shoot!</p>
+            <p>Nếu điểm phát âm ≥ 50, tàu vũ trụ sẽ bắn!</p>
           </div>
           
           <div className="instruction-item">
             <span className="instruction-number">5</span>
-            <p>Complete 10 words before time runs out!</p>
+            <p>Hoàn thành 10 từ trước khi hết thời gian!</p>
           </div>
         </div>
         
         <div className="controls">
-          <h3>CONTROLS</h3>
-          <p className="desktop-instruction">SPACE = Start recording (Voice Activity Detection)</p>
-          <p className="mobile-instruction">Record Button = Start recording (Voice Activity Detection)</p>
-          <p>Once recording starts, just speak each word clearly!</p>
-          <p>'D' = Test Mode (instant correct - desktop only)</p>
-          <p>🎤 Microphone access required!</p>
-          <p>🤖 VAD automatically detects when you speak!</p>
+          <h3>ĐIỀU KHIỂN</h3>
+          <p className="desktop-instruction">SPACE = Bắt đầu ghi âm (Phát hiện giọng nói)</p>
+          <p className="mobile-instruction">Nút Ghi âm = Bắt đầu ghi âm (Phát hiện giọng nói)</p>
+          <p>Khi bắt đầu ghi, chỉ cần nói từng từ rõ ràng!</p>
+          <p>'D' = Chế độ thử nghiệm (đúng ngay lập tức - chỉ máy tính)</p>
+          <p>🎤 Cần quyền truy cập microphone!</p>
+          <p>🤖 VAD tự động phát hiện khi bạn nói!</p>
         </div>
         
         <div className="start-instruction">
-          <p className="desktop-instruction">Press SPACE to Begin Mission</p>
-          <p className="mobile-instruction">Tap the button below to begin</p>
+          <p className="desktop-instruction">Nhấn SPACE để bắt đầu nhiệm vụ</p>
+          <p className="mobile-instruction">Chạm vào nút bên dưới để bắt đầu</p>
           <button className="screen-button play-button" onClick={onStartGame}>
             <span>🎮</span>
-            Begin Mission
+            Bắt đầu nhiệm vụ
           </button>
         </div>
       </div>

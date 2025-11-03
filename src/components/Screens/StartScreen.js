@@ -27,26 +27,26 @@ const StartScreen = ({ onStart, onExit }) => {
       )}
       <div className="screen-content">
         <h1 className="game-title">
-          SPACE
+          CUỘC PHIÊU LƯU
           <br />
-          PRONUNCIATION
+          PHÁT ÂM
           <br />
-          ADVENTURE
+          VŨ TRỤ
         </h1>
         
         <div className="spaceship-logo">🚀</div>
         
         <div className="start-instruction">
-          <p className="desktop-instruction">Press SPACE to Start</p>
-          <p className="mobile-instruction">Tap the button below to start</p>
+          <p className="desktop-instruction">Nhấn SPACE để bắt đầu</p>
+          <p className="mobile-instruction">Chạm vào nút bên dưới để bắt đầu</p>
           <button className="screen-button start-button" onClick={onStart}>
             <span>🚀</span>
-            Start Game
+            Bắt đầu chơi
           </button>
         </div>
         
         <div className="credits">
-          Learn English pronunciation through space combat!
+          Học phát âm tiếng Anh qua trận chiến vũ trụ!
         </div>
       </div>
       

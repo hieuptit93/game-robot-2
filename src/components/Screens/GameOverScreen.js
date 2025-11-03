@@ -27,29 +27,29 @@ const GameOverScreen = ({ score, onTryAgain, onExit }) => {
       )}
       <div className="screen-content">
         <h1 className="screen-title gameover-title">
-          MISSION
+          NHIỆM VỤ
           <br />
-          FAILED
+          THẤT BẠI
         </h1>
         
         <div className="gameover-icon">💥</div>
         
         <div className="score-display">
-          <h2>FINAL SCORE</h2>
+          <h2>ĐIỂM CUỐI CÙNG</h2>
           <div className="final-score">{score}</div>
         </div>
         
         <div className="gameover-message">
-          <p>Time ran out, Commander!</p>
-          <p>Keep practicing your pronunciation skills.</p>
+          <p>Hết thời gian rồi, Chỉ huy!</p>
+          <p>Hãy tiếp tục luyện tập kỹ năng phát âm nhé.</p>
         </div>
         
         <div className="start-instruction">
-          <p className="desktop-instruction">Press SPACE to Try Again</p>
-          <p className="mobile-instruction">Tap the button below to try again</p>
+          <p className="desktop-instruction">Nhấn SPACE để thử lại</p>
+          <p className="mobile-instruction">Chạm vào nút bên dưới để thử lại</p>
           <button className="screen-button retry-button" onClick={onTryAgain}>
             <span>🔄</span>
-            Try Again
+            Thử lại
           </button>
         </div>
       </div>

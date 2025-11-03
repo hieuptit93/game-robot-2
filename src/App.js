@@ -12,6 +12,7 @@ import { useSound } from './hooks/useSound';
 import BackgroundMusic from './components/BackgroundMusic/BackgroundMusic';
 import { supabase } from './lib/supabaseClient';
 import './App.css';
+import './vietnamese-fonts.css';
 
 const WORDS_LIST = [
     // Animals (Động vật)
@@ -374,11 +375,11 @@ function App() {
 
             console.log('🎤 Starting recording...');
             playRecordStartSound();
-            setRecordingStatus('Recording... Speak now!');
+            setRecordingStatus('Đang ghi... Hãy nói!');
             await startListening();
         } catch (error) {
             console.error('Error starting recording:', error);
-            setRecordingStatus('Error starting recording');
+            setRecordingStatus('Lỗi khi bắt đầu ghi âm');
         }
     }, [isListening, isRecording, startListening, stopListening, playRecordStartSound]);
 
@@ -388,7 +389,7 @@ function App() {
 
         try {
             setIsProcessing(true);
-            setRecordingStatus('Checking pronunciation...');
+            setRecordingStatus('Đang kiểm tra phát âm...');
 
             const { checkPronunciation } = await import('./utils');
             const result = await checkPronunciation(audioBlob, currentWord, `game-${Date.now()}`);
@@ -400,7 +401,7 @@ function App() {
                 if (score >= 50) {
                     // CORRECT - Move to next word
                     playSuccessSound();
-                    setRecordingStatus(`Great! Score: ${score.toFixed(0)}`);
+                    setRecordingStatus(`Tuyệt vời! Điểm: ${score.toFixed(0)}`);
 
                     // Calculate new questions count
                     const newQuestionsAnswered = questionsAnswered + 1;
@@ -426,7 +427,7 @@ function App() {
                 } else {
                     // INCORRECT - Try again same word
                     playErrorSound();
-                    setRecordingStatus(`Try again! Score: ${score.toFixed(0)}`);
+                    setRecordingStatus(`Thử lại! Điểm: ${score.toFixed(0)}`);
                     console.log('❌ Incorrect answer, trying again same word');
 
                     // Auto start recording for same word
@@ -441,7 +442,7 @@ function App() {
             } else {
                 // API Error - Try again
                 playErrorSound();
-                setRecordingStatus('Could not process audio. Try again!');
+                setRecordingStatus('Không thể xử lý âm thanh. Thử lại!');
 
                 setTimeout(async () => {
                     setRecordingStatus('');
@@ -453,7 +454,7 @@ function App() {
         } catch (error) {
             console.error('Error processing pronunciation:', error);
             playErrorSound();
-            setRecordingStatus('Processing failed. Try again!');
+            setRecordingStatus('Xử lý thất bại. Thử lại!');
 
             setTimeout(async () => {
                 setRecordingStatus('');
@@ -492,7 +493,7 @@ function App() {
     useEffect(() => {
         if (vadError) {
             console.error('VAD Error:', vadError);
-            setRecordingStatus('VAD Error: ' + vadError);
+            setRecordingStatus('Lỗi VAD: ' + vadError);
         }
     }, [vadError]);
 

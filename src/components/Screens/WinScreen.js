@@ -27,29 +27,29 @@ const WinScreen = ({ score, onPlayAgain, onExit }) => {
       )}
       <div className="screen-content">
         <h1 className="screen-title victory-title">
-          MISSION
+          NHIỆM VỤ
           <br />
-          ACCOMPLISHED!
+          HOÀN THÀNH!
         </h1>
         
         <div className="victory-icon">🏆</div>
         
         <div className="score-display">
-          <h2>FINAL SCORE</h2>
+          <h2>ĐIỂM CUỐI CÙNG</h2>
           <div className="final-score">{score}</div>
         </div>
         
         <div className="victory-message">
-          <p>Excellent pronunciation skills, Commander!</p>
-          <p>You've successfully navigated through space!</p>
+          <p>Kỹ năng phát âm xuất sắc, Chỉ huy!</p>
+          <p>Bạn đã điều hướng thành công qua vũ trụ!</p>
         </div>
         
         <div className="start-instruction">
-          <p className="desktop-instruction">Press SPACE to Play Again</p>
-          <p className="mobile-instruction">Tap the button below to play again</p>
+          <p className="desktop-instruction">Nhấn SPACE để chơi lại</p>
+          <p className="mobile-instruction">Chạm vào nút bên dưới để chơi lại</p>
           <button className="screen-button victory-button" onClick={onPlayAgain}>
             <span>🔄</span>
-            Play Again
+            Chơi lại
           </button>
         </div>
       </div>
