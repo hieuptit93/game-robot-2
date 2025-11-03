@@ -1,0 +1,82 @@
+/* Vietnamese Font Support CSS */
+
+/* Import additional Vietnamese-friendly fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap');
+
+/* Global font fallbacks for Vietnamese characters */
+body, html {
+  font-family: 'Roboto Mono', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure Vietnamese diacritics render properly */
+* {
+  text-rendering: optimizeLegibility;
+  -webkit-font-feature-settings: "liga", "kern";
+  font-feature-settings: "liga", "kern";
+}
+
+/* Specific font assignments for better Vietnamese support */
+.vietnamese-text {
+  font-family: 'Inter', 'Roboto Mono', sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.vietnamese-title {
+  font-family: 'Orbitron', 'Inter', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.vietnamese-button {
+  font-family: 'Orbitron', 'Inter', sans-serif;
+  font-weight: 600;
+}
+
+/* Fix for common Vietnamese character rendering issues */
+.word-text,
+.game-title,
+.screen-title,
+.instruction-item,
+.controls p,
+.victory-message p,
+.gameover-message p,
+.recording-status,
+.instruction-text,
+.screen-button {
+  font-variant-ligatures: normal;
+  font-feature-settings: "liga" 1, "calt" 1;
+}
+
+/* Ensure proper spacing for Vietnamese text */
+.vietnamese-spacing {
+  letter-spacing: 0.5px;
+  word-spacing: 1px;
+}
+
+/* Mobile font size adjustments for Vietnamese */
+@media (max-width: 768px) {
+  .vietnamese-text {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .vietnamese-title {
+    font-size: 24px;
+    line-height: 1.3;
+  }
+}
+
+@media (max-width: 480px) {
+  .vietnamese-text {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  
+  .vietnamese-title {
+    font-size: 20px;
+    line-height: 1.4;
+  }
+}
