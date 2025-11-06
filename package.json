@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@datadog/browser-rum": "^6.23.0",
+    "@datadog/browser-rum-react": "^6.23.0",
     "@ricky0123/vad-web": "^0.0.28",
     "@supabase/supabase-js": "^2.78.0",
     "onnxruntime-web": "^1.23.0",

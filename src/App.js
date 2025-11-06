@@ -11,6 +11,7 @@ import { usePronunciationScoring } from './hooks/usePronunciationScoring';
 import { useSound } from './hooks/useSound';
 import BackgroundMusic from './components/BackgroundMusic/BackgroundMusic';
 import { supabase } from './lib/supabaseClient';
+import { setDatadogUser } from './datadog';
 import './App.css';
 import './vietnamese-fonts.css';
 
@@ -72,7 +73,7 @@ function App() {
     const [recordingStatus, setRecordingStatus] = useState('');
     const [isProcessing, setIsProcessing] = useState(false);
     const [shuffledWords, setShuffledWords] = useState(() => shuffleArray(WORDS_LIST));
-    
+
     // URL params and session management
     const [urlParams, setUrlParams] = useState({});
     const [userId, setUserId] = useState(null);
@@ -145,6 +146,17 @@ function App() {
         }
     }, []);
 
+    // Set Datadog user when userId is available
+    useEffect(() => {
+        if (userId) {
+            const additionalInfo = {};
+            if (age !== null) additionalInfo.age = age;
+            if (gameId !== null) additionalInfo.gameId = gameId;
+
+            setDatadogUser(userId, additionalInfo);
+        }
+    }, [userId, age, gameId]);
+
     // Create a game_session row only when game actually starts
     useEffect(() => {
         const createSession = async () => {
@@ -193,9 +205,9 @@ function App() {
                 setIsSurveyOpen(false);
                 return;
             }
-            
+
             console.log('🔍 Checking survey display:', { gameState, gameSessionId, userId, gameId, score });
-            
+
             try {
                 const numericGameId = Number.isFinite(Number(gameId)) ? Number(gameId) : null;
 
@@ -250,7 +262,7 @@ function App() {
         const timer = setTimeout(() => {
             checkAndOpenSurvey();
         }, 200);
-        
+
         return () => clearTimeout(timer);
     }, [gameState, gameSessionId, userId, gameId, score]);
 
