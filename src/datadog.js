@@ -3,13 +3,13 @@ import { reactPlugin } from '@datadog/browser-rum-react';
 
 // Khởi tạo Datadog RUM
 datadogRum.init({
-  applicationId: process.env.REACT_APP_DATADOG_APPLICATION_ID,
-  clientToken: process.env.REACT_APP_DATADOG_CLIENT_TOKEN,
-  site: process.env.REACT_APP_DATADOG_SITE,
-  service: process.env.REACT_APP_DATADOG_SERVICE,
-  env: process.env.NODE_ENV || 'development',
+  applicationId: '00dd11cc-a443-46ae-a7c7-6cfb93bf621c',
+  clientToken: 'pub4b4b85bead100f373d44f10a9ca7b7cb',
+  site: 'us5.datadoghq.com',
+  service: 'space-pronunciation-game',
+  env: 'prod',
   // Specify a version number to identify the deployed version of your application in Datadog
-  version: process.env.REACT_APP_DATADOG_VERSION,
+  version: '1.0.0',
   sessionSampleRate: 100,
   sessionReplaySampleRate: 100,
   defaultPrivacyLevel: 'mask-user-input',
